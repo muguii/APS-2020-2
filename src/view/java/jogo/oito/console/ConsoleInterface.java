@@ -1,26 +1,26 @@
 package jogo.oito.console;
 
+import java.util.List;
+
 import jogo.oito.JogoDoOito;
 import jogo.oito.entidade.Peca;
 
 public class ConsoleInterface {
 	
-	public static void printBoard(JogoDoOito jogo) {
-		Peca[][] pecas = jogo.getPecasDoTabuleiro();
+	public static void imprimirTabuleiro(JogoDoOito jogo) {
+		List<Peca> pecas = jogo.getTabuleiro().getPecas();
+		//pecas.forEach(peca -> imprimirPeca(peca));
 		
-		for (int i = 0; i < pecas.length; i++) {
-			for (int j = 0; j < pecas.length; j++) {
-				printPeca(pecas[i][j]);
+		for(int i = 0; i < pecas.size(); i++) {
+			imprimirPeca(pecas.get(i));
+			if (i == 2 || i == 5) {
+				System.out.println();
 			}
-			System.out.println();
 		}
 	}
 	
-	private static void printPeca(Peca peca) {
-		if (peca.getValor() != 0) {
-			System.out.print(peca.getValor() + " ");
-		} else {
-			System.out.print("- ");
-		}
+	private static void imprimirPeca(Peca peca) {
+		System.out.print(peca.getValor() + " ");
 	}
+	
 }
