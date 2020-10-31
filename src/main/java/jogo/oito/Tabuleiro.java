@@ -17,7 +17,6 @@ public class Tabuleiro {
 		//1 3 4 
 		//8 6 2 
 		//7 0 5
-		
 		pecas.add(new Peca(this, 1));
 		pecas.add(new Peca(this, 3));
 		pecas.add(new Peca(this, 4));
@@ -44,25 +43,19 @@ public class Tabuleiro {
 		Peca baixo = pecas.get(7);
 		Peca baixoDireita = pecas.get(8);
 		
-		//cimaEsquerda.setVizinhoCima(null);
 		cimaEsquerda.setVizinhoDireita(cimaDireita);
 		cimaEsquerda.setVizinhoBaixo(meioEsquerda);
-		//cimaEsquerda.setVizinhoEsquerda(null);
 		
-		//cima.setVizinhoCima(null);
 		cima.setVizinhoDireita(cimaDireita);
 		cima.setVizinhoBaixo(meio);
 		cima.setVizinhoEsquerda(cimaEsquerda);
 		
-		//cimaDireita.setVizinhoCima(null);
-		//cimaDireita.setVizinhoDireita(null);
 		cimaDireita.setVizinhoBaixo(meioDireita);
 		cimaDireita.setVizinhoEsquerda(cima);
 		
 		meioEsquerda.setVizinhoCima(cimaEsquerda);
 		meioEsquerda.setVizinhoDireita(meio);
 		meioEsquerda.setVizinhoBaixo(baixoEsquerda);
-		//meioEsquerda.setVizinhoEsquerda(null);
 		
 		meio.setVizinhoCima(cima);
 		meio.setVizinhoDireita(meioDireita);
@@ -70,23 +63,17 @@ public class Tabuleiro {
 		meio.setVizinhoEsquerda(meioEsquerda);
 		
 		meioDireita.setVizinhoCima(cimaDireita);
-		//meioDireita.setVizinhoDireita(null);
 		meioDireita.setVizinhoBaixo(baixoDireita);
 		meioDireita.setVizinhoEsquerda(meio);
 		
 		baixoEsquerda.setVizinhoCima(meioEsquerda);
 		baixoEsquerda.setVizinhoDireita(baixo);
-		//baixoEsquerda.setVizinhoBaixo(null);
-		//baixoEsquerda.setVizinhoEsquerda(null);
 		
 		baixo.setVizinhoCima(meio);
 		baixo.setVizinhoDireita(baixoDireita);
-		//baixo.setVizinhoBaixo(null);
 		baixo.setVizinhoEsquerda(baixoEsquerda);
 		
 		baixoDireita.setVizinhoCima(meioDireita);
-		//baixoDireita.setVizinhoDireita(null);
-		//baixoDireita.setVizinhoBaixo(null);
 		baixoDireita.setVizinhoEsquerda(baixo);
 	}
 

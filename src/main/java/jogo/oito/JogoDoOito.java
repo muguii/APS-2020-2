@@ -8,10 +8,9 @@ public class JogoDoOito {
 	public JogoDoOito() {
 		tabuleiro = new Tabuleiro();
 		movimentos = 0;
-		this.novoJogo();
 	}
 
-	private void novoJogo() {
+	public void iniciarJogo() {
 		tabuleiro.configuracaoInicial();
 	}
 
@@ -39,4 +38,7 @@ public class JogoDoOito {
 		return tabuleiro;
 	}
 	
+	public Integer getMovimentos() {
+		return movimentos;
+	}
 }
