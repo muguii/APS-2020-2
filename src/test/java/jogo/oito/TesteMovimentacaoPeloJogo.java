@@ -15,7 +15,7 @@ public class TesteMovimentacaoPeloJogo {
 	
 	@Before
 	public void setUp() {
-		jogo = new JogoDoOito();
+		jogo = new JogoDoOito(null);
 	}
 	
 	@Test

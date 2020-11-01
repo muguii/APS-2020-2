@@ -15,7 +15,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class InterfaceGrafica extends JFrame {
+import jogo.oito.entidade.Partida;
+
+public class JanelaJogo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -37,22 +39,24 @@ public class InterfaceGrafica extends JFrame {
 	private JButton botaoEsquerda;
 	private JButton botaoBaixo;
 	private JButton botaoDireita;
+	private JButton botaoNovoJogo;
 	
-	private ControleInterfaceGrafica controle;
+	private ControleJanelaJogo controle;
 
-	public InterfaceGrafica() {
+	public JanelaJogo(Partida partida) {
 		configurarJanela();
 		montarTela();
-		this.controle = new ControleInterfaceGrafica(panelGrid.getComponents(), labelQuantidadeDeMovimentos);
+		this.controle = new ControleJanelaJogo(panelGrid.getComponents(), labelQuantidadeDeMovimentos, partida);
 		setVisible(true);
 		controle.iniciarJogo();
 	}
 
 	private void configurarJanela() {
-		setTitle("Jogo Do Oito");		
+		setTitle("Jogo do 8");		
 		setSize(380, 420);
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 	}
 	
 	private void montarTela() {
@@ -63,17 +67,17 @@ public class InterfaceGrafica extends JFrame {
 
 	private void montarPanels() {
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(20, 11, 330, 350);
+		panelPrincipal.setBounds(20, 11, 330, 360);
 		panelPrincipal.setLayout(null);
 		
 		panelGrid = new JPanel();
 		panelGrid.setBackground(new Color(119, 136, 153));
 		panelGrid.setBorder(new EmptyBorder(1,1,1,1));
-		panelGrid.setBounds(15, 51, 300, 220);
+		panelGrid.setBounds(15, 71, 300, 220);
 		panelGrid.setLayout(new GridLayout(3, 3, 1, 1));
 		
 		panelBotoes = new JPanel();
-		panelBotoes.setBounds(15, 280, 300, 58);
+		panelBotoes.setBounds(15, 300, 300, 58);
 		panelBotoes.setLayout(null);
 		
 		getContentPane().add(panelPrincipal);
@@ -140,11 +144,11 @@ public class InterfaceGrafica extends JFrame {
 		
 		labelMovimentos = new JLabel("Movimentos");
 		labelMovimentos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelMovimentos.setBounds(128, 5, 80, 25);
+		labelMovimentos.setBounds(128, 25, 80, 25);
 		
 		labelQuantidadeDeMovimentos = new JLabel();
 		labelQuantidadeDeMovimentos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelQuantidadeDeMovimentos.setBounds(162, 28, 46, 14);
+		labelQuantidadeDeMovimentos.setBounds(162, 48, 46, 14);
 		
 		panelGrid.add(labelCimaEsquerda);
 		panelGrid.add(labelCima);
@@ -161,7 +165,8 @@ public class InterfaceGrafica extends JFrame {
 
 	private void montarBotoes() {
 		botaoCima = new JButton("CIMA");
-		botaoCima.setBounds(100, 0, 98, 23);
+		botaoCima.setFocusable(false);
+		botaoCima.setBounds(100, 0, 98, 25);
 		botaoCima.addActionListener(new ActionListener() {
 			
 			@Override
@@ -172,7 +177,8 @@ public class InterfaceGrafica extends JFrame {
 		});
 		
 		botaoDireita = new JButton("DIREITA");
-		botaoDireita.setBounds(200, 28, 98, 23);
+		botaoDireita.setFocusable(false);
+		botaoDireita.setBounds(200, 28, 98, 25);
 		botaoDireita.addActionListener(new ActionListener() {
 			
 			@Override
@@ -183,7 +189,8 @@ public class InterfaceGrafica extends JFrame {
 		});
 		
 		botaoBaixo = new JButton("BAIXO");
-		botaoBaixo.setBounds(100, 28, 98, 23);
+		botaoBaixo.setFocusable(false);
+		botaoBaixo.setBounds(100, 28, 98, 25);
 		botaoBaixo.addActionListener(new ActionListener() {
 			
 			@Override
@@ -194,7 +201,8 @@ public class InterfaceGrafica extends JFrame {
 		});
 		
 		botaoEsquerda = new JButton("ESQUERDA");
-		botaoEsquerda.setBounds(0, 28, 98, 23);
+		botaoEsquerda.setFocusable(false);
+		botaoEsquerda.setBounds(0, 28, 98, 25);
 		botaoEsquerda.addActionListener(new ActionListener() {
 			
 			@Override
@@ -204,9 +212,22 @@ public class InterfaceGrafica extends JFrame {
 			
 		});
 		
+		botaoNovoJogo = new JButton("Nogo Jogo");
+		botaoNovoJogo.setFocusable(false);
+		botaoNovoJogo.setBounds(15, 0, 95, 25);
+		botaoNovoJogo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controle.novoJogo();
+			}
+			
+		});
+		
 		panelBotoes.add(botaoCima);
 		panelBotoes.add(botaoDireita);
 		panelBotoes.add(botaoBaixo);
 		panelBotoes.add(botaoEsquerda);
+		panelPrincipal.add(botaoNovoJogo);
 	}
 }

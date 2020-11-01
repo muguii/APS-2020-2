@@ -1,13 +1,15 @@
 package jogo.oito;
 
+import jogo.oito.entidade.Partida;
+
 public class JogoDoOito {
 
 	private Tabuleiro tabuleiro;
-	private Integer movimentos;
+	private Partida partida;
 	
-	public JogoDoOito() {
+	public JogoDoOito(Partida partida) {
 		tabuleiro = new Tabuleiro();
-		movimentos = 0;
+		this.partida = partida;
 	}
 
 	public void iniciarJogo() {
@@ -16,29 +18,30 @@ public class JogoDoOito {
 
 	public void moverParaCima() {
 		tabuleiro.getCoringa().moverParaCima();
-		movimentos++;
+		partida.incrementarMovimentos();
 	}
 
 	public void moverParaDireita() {
 		tabuleiro.getCoringa().moverParaDireita();
-		movimentos++;
+		partida.incrementarMovimentos();
 	}
 	
 	public void moverParaBaixo() {
 		tabuleiro.getCoringa().moverParaBaixo();
-		movimentos++;
+		partida.incrementarMovimentos();
 	}
 
 	public void moverParaEsquerda() {
 		tabuleiro.getCoringa().moverParaEsquerda();
-		movimentos++;
+		partida.incrementarMovimentos();
 	}
 
 	public Tabuleiro getTabuleiro() {
 		return tabuleiro;
 	}
 	
-	public Integer getMovimentos() {
-		return movimentos;
+	public Partida getPartida() {
+		return partida;
 	}
+	
 }

@@ -8,7 +8,8 @@ public class AplicacaoConsole {
 	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		JogoDoOito jogo = new JogoDoOito();
+		JogoDoOito jogo = new JogoDoOito(null);
+		jogo.iniciarJogo();
 		
 		System.out.println("------------- TABULEIRO -------------");
 		ConsoleInterface.imprimirTabuleiro(jogo);

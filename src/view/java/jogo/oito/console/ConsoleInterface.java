@@ -9,7 +9,6 @@ public class ConsoleInterface {
 	
 	public static void imprimirTabuleiro(JogoDoOito jogo) {
 		List<Peca> pecas = jogo.getTabuleiro().getPecas();
-		//pecas.forEach(peca -> imprimirPeca(peca));
 		
 		for(int i = 0; i < pecas.size(); i++) {
 			imprimirPeca(pecas.get(i));

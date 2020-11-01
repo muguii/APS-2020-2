@@ -14,7 +14,7 @@ public class TesteMovimentacaoPelaPeca {
 	
 	@Before
 	public void setUp() {
-		jogo = new JogoDoOito();
+		jogo = new JogoDoOito(null);
 		tabuleiro = jogo.getTabuleiro();
 	}
 	
